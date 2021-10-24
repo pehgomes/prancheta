@@ -1,0 +1,12 @@
+.Card {
+    flex: 1; /*faz com q o componente cresca */
+    margin: 20px;
+    border: 1px solid #c3c3c3;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+
+    /* transforma em um flex box */
+    display: flex;
+    flex-direction: column;
+}
