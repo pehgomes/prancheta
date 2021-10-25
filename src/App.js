@@ -1,22 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-import { useCanvas } from './hooks/useCanvas';
+import { BrowserRouter as Router } from 'react-router-dom'
 import produtos from './players'
 
-// import Canvas from './Canvas'
 
-import logo from './logo.svg';
-import campinho from './campinho.jpg'
 import './App.css';
 
 import Navbar from './components/layout/Navbar.js'
-import Container from './components/layout/Container'
 import Card from './components/Card.js'
-import CardListView from './components/CardListView.js'
 import Canvas from './components/Canva'
-import Teste from './components/Teste'
 import ListaJogadores from './components/ListaJogadores';
 import Formacao from './components/Formacao';
 
@@ -37,9 +30,9 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
 
-    var a = this.createPlayer(100, 75, 50, 0, 2 * Math.PI, 25, 25, "purple");
-    var b = this.createPlayer(200, 75, 50, 0, 2 * Math.PI, 25, 25, "purple")
-    var c = this.createPlayer(200, 20, 50, 0, 2 * Math.PI, 25, 25, "purple")
+    var a = this.createPlayer(100, 75, 35, 0, 2 * Math.PI, 25, 10, "#673AB7");
+    var b = this.createPlayer(200, 75, 35, 0, 2 * Math.PI, 25, 10, "#673AB7")
+    var c = this.createPlayer(200, 20, 35, 0, 2 * Math.PI, 25, 10, "#673AB7")
 
     let { ships } = this.state;
     ships.push(a);
@@ -62,9 +55,6 @@ export default class App extends React.Component {
       bottom: y + height,
       fill: fill
     }
-
-
-
     return p;
   }
 
@@ -83,7 +73,7 @@ export default class App extends React.Component {
 
         <div className="Cards">
           <Card titulo="Esquerda" color="#FA6900">
-           <ListaJogadores></ListaJogadores> 
+            <ListaJogadores></ListaJogadores>
           </Card>
 
 

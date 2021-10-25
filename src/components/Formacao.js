@@ -14,34 +14,34 @@ export default class Formacao extends React.Component {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>3-4-3</td>
+                        <td style={{textAlign: "center"}}><output name="" for=""> 3    4   3</output></td>
                     </tr>
                     <tr>
-                        <td>3-4-3</td>
+                        <td style={{textAlign: "center"}}>3-4-3</td>
                     </tr>
                     <tr>
-                        <td>3-4-3</td>
+                        <td style={{textAlign: "center"}}>3-4-3</td>
                     </tr>
                     <tr>
-                        <td>3-4-3</td>
+                        <td style={{textAlign: "center"}}>3-4-3</td>
                     </tr>
                     <tr>
-                        <td>3-4-3</td>
+                        <td style={{textAlign: "center"}}>3-4-3</td>
                     </tr>
                     <tr>
-                        <td>3-4-3</td>
+                        <td style={{textAlign: "center"}}>3-4-3</td>
                     </tr>
                     <tr>
-                        <td>3-4-3</td>
+                        <td style={{textAlign: "center"}}>3-4-3</td>
                     </tr>
                     <tr>
-                        <td>3-4-3</td>
+                        <td style={{textAlign: "center"}}>3-4-3</td>
                     </tr>
                     <tr>
-                        <td>3-4-3</td>
+                        <td style={{textAlign: "center"}}>3-4-3</td>
                     </tr>
                     <tr>
-                        <td>3-4-3</td>
+                        <td style={{textAlign: "center"}}>3-4-3</td>
                     </tr>
                 </tbody>
             </Table>
