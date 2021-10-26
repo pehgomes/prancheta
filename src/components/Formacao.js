@@ -43,6 +43,18 @@ export default class Formacao extends React.Component {
                     <tr>
                         <td style={{textAlign: "center"}}>3-4-3</td>
                     </tr>
+                    <tr>
+                        <td style={{textAlign: "center"}}>3-4-3</td>
+                    </tr>
+                    <tr>
+                        <td style={{textAlign: "center"}}>3-4-3</td>
+                    </tr>
+                    <tr>
+                        <td style={{textAlign: "center"}}>3-4-3</td>
+                    </tr>
+                    <tr>
+                        <td style={{textAlign: "center"}}>3-4-3</td>
+                    </tr>
                 </tbody>
             </Table>
         )

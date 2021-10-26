@@ -10,9 +10,8 @@ import './App.css';
 import Navbar from './components/layout/Navbar.js'
 import Card from './components/Card.js'
 import Canvas from './components/Canva'
-import ListaJogadores from './components/ListaJogadores';
 import Formacao from './components/Formacao';
-
+import ListaJogadores from './components/ListaJogadores';
 
 
 export const canvasWidth = window.innerWidth * .5;
@@ -72,18 +71,16 @@ export default class App extends React.Component {
         </Router>
 
         <div className="Cards">
-          <Card titulo="Esquerda" color="#FA6900">
-            <ListaJogadores></ListaJogadores>
+          <Card width={canvasWidth} titulo="Esquerda" color="#FA6900">
+            <ListaJogadores className="Teste"></ListaJogadores>
           </Card>
 
 
           <div className="CardDoMeio">
-            {/* <Teste></Teste> */}
             <Canvas
               ships={this.state.ships}
               width={canvasWidth}
               height={600}>
-
             </Canvas>
 
           </div>
