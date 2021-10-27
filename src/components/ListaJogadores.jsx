@@ -52,7 +52,7 @@ export default class ListaJogadores extends React.Component {
                     <tbody>
 
                         {this.state.teamResource.map((squad) => (
-                            <tr>
+                            <tr key={squad.id}>
                                 <td >
                                     <Image src="https://i.pinimg.com/originals/82/a0/c0/82a0c08f08e799ae8c0e4745598d0bf4.png" style={{ width: 47, height: 47, marginRight: 47 }} roundedCircle />
                                     <output name="Tinga" for="Tinga">{squad.name}</output>

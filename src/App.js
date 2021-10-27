@@ -32,11 +32,26 @@ export default class App extends React.Component {
     var a = this.createPlayer(100, 75, 35, 0, 2 * Math.PI, 25, 10, "#673AB7");
     var b = this.createPlayer(200, 75, 35, 0, 2 * Math.PI, 25, 10, "#673AB7")
     var c = this.createPlayer(200, 20, 35, 0, 2 * Math.PI, 25, 10, "#673AB7")
+    var d = this.createPlayer(100, 75, 35, 0, 2 * Math.PI, 25, 10, "#673AB7");
+    var e = this.createPlayer(200, 75, 35, 0, 2 * Math.PI, 25, 10, "#673AB7")
+    var f = this.createPlayer(200, 20, 35, 0, 2 * Math.PI, 25, 10, "#673AB7")
+    var g = this.createPlayer(200, 75, 35, 0, 2 * Math.PI, 25, 10, "#673AB7");
+
+    var h = this.createPlayer(300, 300, 35, 0, 2 * Math.PI, 25, 10, "#673AB7")
+    var i = this.createPlayer(300, 472, 35, 0, 2 * Math.PI, 25, 10, "#673AB7")
+    var j = this.createPlayer(420, 285, 35, 0, 2 * Math.PI, 25, 10, "#673AB7")
+    var k = this.createPlayer(413, 117, 35, 0, 2 * Math.PI, 25, 10, "#673AB7")
 
     let { ships } = this.state;
-    ships.push(a);
-    ships.push(b);
-    ships.push(c);
+    ships.push(i);
+    ships.push(j);
+    ships.push(k);
+
+    ships.push(d);
+    ships.push(e);
+    ships.push(f);
+    ships.push(g);
+    ships.push(h);
 
     this.createPlayer = this.createPlayer.bind(this)
   }

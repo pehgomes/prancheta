@@ -7,17 +7,93 @@ export default class Canva extends React.Component {
         canvasRef: 0,
         ctx: 0,
         ships: this.props.ships || Array(1),
-        // mouseX: 0,
-        // mouseY: 0,
         offsetX: 0,
         offsetY: 0,
         mouseIsDown: false,
         lastX: 0,
-        lastY: 0
+        lastY: 0,
+        count: 0,
+        formacao: {
+            id: 123,
+            output: "3  -  5  -  2",
+            zag: 3,
+            mei: 5,
+            ata: 2,
+            xZag: [
+                { x: 170, y: 150, z: 35 },
+                { x: 170, y: 250, z: 35 },
+                { x: 170, y: 390, z: 35 }
+            ],
+            xMei: [
+                { x: 365, y: 85, z: 35 },
+                { x: 355, y: 210, z: 35 },
+                { x: 355, y: 330, z: 35 },
+                { x: 365, y: 492, z: 35 },
+                { x: 480, y: 330, z: 35 }
+            ]
+        }
+    }
+
+
+    mudarFormacao = () => {
+        var formacao = this.state.formacao;
+        var esq = null;
+
+        for (var i = 0; i < this.state.ships.length; i++) {
+            var ship = this.state.ships[i]
+
+            if (i < formacao.zag) {
+                esq = formacao.xZag[i]
+            } else if (i < formacao.mei + formacao.zag) {
+                esq = formacao.xMei[i - formacao.zag]
+            }
+
+            ship.x = esq.x;
+            ship.y = esq.y;
+            ship.r = esq.z;
+
+            this.handleMouseMoveTeste(esq.x, esq.y)
+
+        }
+
+        this.state.formacao.xZag.map((zag) => (
+            this.setState({
+                count: this.count + 1
+            })
+        ))
+    }
+
+    handleMouseMoveTeste(x, y) {
+
+
+        var mouseX = parseInt(x- this.state.offsetX);
+        var mouseY = parseInt(y - this.state.offsetY);
+
+
+        for (var i = 0; i < this.state.ships.length; i++) {
+            var ship = this.state.ships[i];
+            this.draw(ship);
+            if (this.state.ctx.isPointInPath(this.state.lastX, this.state.lastY)) {
+                ship.x += (mouseX - this.state.lastX);
+                ship.y += (mouseY - this.state.lastY);
+                ship.right = ship.x + ship.width;
+                ship.bottom = ship.y + ship.height;
+            }
+
+        }
+
+        this.setState({
+            lastX: mouseX,
+            lastY: mouseY,
+        })
+
+        this.drawAllShips();
+
     }
 
     constructor(props) {
         super(props)
+        this.mudarFormacao = this.mudarFormacao.bind(this)
 
         this.handleMouseMove = this.handleMouseMove.bind(this)
         this.handleMouseDown = this.handleMouseDown.bind(this)
@@ -27,8 +103,6 @@ export default class Canva extends React.Component {
     }
 
 
-
-
     draw = (ship) => {
         //  this.state.ctx.clearRect(0, 0, this.state.ctx.canvas.width, this.state.ctx.canvas.height)
         if (ship != undefined) {
@@ -36,7 +110,6 @@ export default class Canva extends React.Component {
             this.state.ctx.moveTo(ship.x, ship.y)
             this.state.ctx.arc(ship.x, ship.y, ship.r, ship.sAngle, ship.eAngle);
             this.state.ctx.stroke();
-
         }
     }
 
@@ -63,6 +136,8 @@ export default class Canva extends React.Component {
             mouseIsDown: true
         })
 
+        console.log(`acabei de clicar em:\n x - ${mouseX}\n y - ${mouseY} `)
+
     }
 
     handleMouseUp(e) {
@@ -80,23 +155,15 @@ export default class Canva extends React.Component {
             return;
         }
 
-        // this.setState({
-        //     mouseX: parseInt(e.clientX - this.state.offsetX),
-        //     mouseY: parseInt(e.clientY - this.state.offsetY)
-        // });
 
-        var mouseX= parseInt(e.clientX - this.state.offsetX);
-        var mouseY= parseInt(e.clientY - this.state.offsetY);
-
-        console.log('primeiro mouse move - ' + mouseX)
-        console.log('primeiro mouse move - ' + mouseY)
+        var mouseX = parseInt(e.clientX - this.state.offsetX);
+        var mouseY = parseInt(e.clientY - this.state.offsetY);
 
 
         for (var i = 0; i < this.state.ships.length; i++) {
             var ship = this.state.ships[i];
             this.draw(ship);
             if (this.state.ctx.isPointInPath(this.state.lastX, this.state.lastY)) {
-                console.log('CLICOU')
                 ship.x += (mouseX - this.state.lastX);
                 ship.y += (mouseY - this.state.lastY);
                 ship.right = ship.x + ship.width;
@@ -131,6 +198,7 @@ export default class Canva extends React.Component {
     }
 
 
+
     render() {
         return (
             <div>
@@ -145,6 +213,8 @@ export default class Canva extends React.Component {
                         backgroundPosition: 'center',
                     }}>
                 </canvas>
+
+                <button onClick={this.mudarFormacao}>Mudar Formação</button>
             </div>
 
         )
