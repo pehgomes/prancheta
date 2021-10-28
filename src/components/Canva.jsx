@@ -19,17 +19,18 @@ export default class Canva extends React.Component {
             zag: 3,
             mei: 5,
             ata: 2,
-            xZag: [
-                { x: 170, y: 150, z: 35 },
-                { x: 170, y: 250, z: 35 },
-                { x: 170, y: 390, z: 35 }
-            ],
-            xMei: [
-                { x: 365, y: 85, z: 35 },
-                { x: 355, y: 210, z: 35 },
-                { x: 355, y: 330, z: 35 },
-                { x: 365, y: 492, z: 35 },
-                { x: 480, y: 330, z: 35 }
+            posicoes: [
+                { x: 55, y: 318, z: 35 },
+                { x: 235, y: 165, z: 35 },
+                { x: 205, y: 315, z: 35 },
+                { x: 235, y: 479, z: 35 },
+                { x: 500, y: 94, z: 35 },
+                { x: 460, y: 235, z: 35 },
+                { x: 565, y: 315, z: 35 },
+                { x: 460, y: 391, z: 35 },
+                { x: 450, y: 550, z: 35 },
+                { x: 755, y: 165, z: 35 },
+                { x: 755, y: 460, z: 35 }
             ]
         }
     }
@@ -42,12 +43,7 @@ export default class Canva extends React.Component {
         for (var i = 0; i < this.state.ships.length; i++) {
             var ship = this.state.ships[i]
 
-            if (i < formacao.zag) {
-                esq = formacao.xZag[i]
-            } else if (i < formacao.mei + formacao.zag) {
-                esq = formacao.xMei[i - formacao.zag]
-            }
-
+            esq = formacao.posicoes[i];
             ship.x = esq.x;
             ship.y = esq.y;
             ship.r = esq.z;
@@ -56,17 +52,12 @@ export default class Canva extends React.Component {
 
         }
 
-        this.state.formacao.xZag.map((zag) => (
-            this.setState({
-                count: this.count + 1
-            })
-        ))
     }
 
     handleMouseMoveTeste(x, y) {
 
 
-        var mouseX = parseInt(x- this.state.offsetX);
+        var mouseX = parseInt(x - this.state.offsetX);
         var mouseY = parseInt(y - this.state.offsetY);
 
 
@@ -120,7 +111,12 @@ export default class Canva extends React.Component {
             this.draw(ship);
             this.state.ctx.fillStyle = ship.fill;
             this.state.ctx.fill();
-            this.state.ctx.stroke();
+            // this.state.ctx.stroke();
+            this.state.ctx.font = 'italic 18px Arial';
+            this.state.ctx.textAlign = 'center';
+            this.state.ctx.textBaseline = 'middle';
+            this.state.ctx.fillStyle = 'white';  // a color name or by using rgb/rgba/hex values
+            this.state.ctx.fillText('Hello World!', 150, 50); // text and position
         }
     }
 
