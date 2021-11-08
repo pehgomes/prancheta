@@ -1,23 +1,18 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 import { BrowserRouter as Router } from 'react-router-dom'
 import produtos from './players'
 
-
-import './App.css';
-
 import Navbar from './components/layout/Navbar.js'
 import Card from './components/Card.js'
-import Canvas from './components/Canva'
 import Formacao from './components/Formacao';
 import ListaJogadores from './components/ListaJogadores';
-
+import Campo from './components/Campo'
 
 export const canvasWidth = window.innerWidth * .5;
 export const canvasHeight = window.innerHeight * .5;
-
-
 
 export default class App extends React.Component {
 
@@ -44,9 +39,9 @@ export default class App extends React.Component {
     var k = this.createPlayer(413, 117, 35, 0, 2 * Math.PI, 25, 10, "#673AB7")
 
     let { ships } = this.state;
-    
+
     ships.push(a);
-    
+
     ships.push(b);
     ships.push(c);
     ships.push(i);
@@ -84,7 +79,7 @@ export default class App extends React.Component {
       return <li key={prod.id}>{prod.id} - {prod.name}</li>
     })
   }
-  
+
 
   render() {
     return (
@@ -100,12 +95,7 @@ export default class App extends React.Component {
 
 
           <div className="CardDoMeio">
-            <Canvas
-              ships={this.state.ships}
-              width={canvasWidth}
-              height={600}>
-            </Canvas>
-
+            <Campo></Campo>
           </div>
 
           <Card titulo="Direita" color="#FA6900">

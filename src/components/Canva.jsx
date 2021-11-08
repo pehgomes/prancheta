@@ -132,7 +132,7 @@ export default class Canva extends React.Component {
             mouseIsDown: true
         })
 
-        console.log(`acabei de clicar em:\n x - ${mouseX}\n y - ${mouseY} `)
+        console.log(`${mouseX} , ${mouseY} `)
 
     }
 
@@ -209,8 +209,8 @@ export default class Canva extends React.Component {
                         backgroundPosition: 'center',
                     }}>
                 </canvas>
-
-                <button onClick={this.mudarFormacao}>Mudar Formação</button>
+{/* 
+                <button onClick={this.mudarFormacao}>Mudar Formação</button> */}
             </div>
 
         )
@@ -221,3 +221,4 @@ export default class Canva extends React.Component {
 // export default Canvas
 // http://jsfiddle.net/6xerkts8/6/
 // https://stackoverflow.com/questions/35850118/setting-state-on-componentdidmount/35853603#:~:text=You%20may%20call%20setState(),t%20see%20the%20intermediate%20state.
+// https://jsfiddle.net/9oeju4sa/ -- ultima atualizacao
