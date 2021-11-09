@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createRef } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -14,32 +14,41 @@ import Campo from './components/Campo'
 export const canvasWidth = window.innerWidth * .5;
 export const canvasHeight = window.innerHeight * .5;
 
-export default class App extends React.Component {
+// const Campo = ({ setRef }) => <div ref={setRef} />
 
-  state = {
-    nodes: [],
-    canvasRef: React.createRef(),
-    teamResource: []
-  }
+export default class App extends React.Component {
 
   componentDidMount() {
     fetch(`http://localhost:8080/football/3984/players`)
       .then(res => res.json())
       .then((data) => {
-        this.setState({ nodes: data })
+        this.setState({ nodes: this.toNode(data) })
       })
-      .catch(console.log)
   }
 
   toNode(squads) {
     let id = 0;
     var nodes = []
     squads.forEach(squad => {
-      nodes.push({ id: id, shape: "dot", label: squad.name, x: -400, y: 200 })
+      nodes.push({ id: squad.randomId, shape: "dot", label: squad.name, x: -400, y: 200, position: squad.position })
     })
 
     return nodes;
   }
+
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      nodes: [],
+      canvasRef: React.createRef(),
+      teamResource: [],
+      minhaRef: {}
+    }
+
+  }
+
 
   render() {
     return (
@@ -53,9 +62,8 @@ export default class App extends React.Component {
             <ListaJogadores nodes={this.state.nodes} height={canvasHeight} className="Teste"></ListaJogadores>
           </Card>
 
-
           <div className="CardDoMeio">
-            <Campo nodes={this.state.nodes}></Campo>
+            <Campo nodes={this.state.nodes} ></Campo>
           </div>
 
           <Card titulo="Direita" color="#FA6900">
