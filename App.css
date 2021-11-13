@@ -1,0 +1,40 @@
+.App {
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  
+}
+
+.Cards {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 100px;
+}
+
+.CardDoMeio {
+  /* width: 937px; */
+  height: 600px;
+  border: 1px solid #000;
+  margin: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-width: 800px;
+}
+
+
+.App .list {
+  list-style: none;
+  align-items: center;
+}
+
+.App .item {
+  margin-right: 1em;
+}
+
+.App .item a {
+  color: #fff;
+  text-decoration: none;
+}
