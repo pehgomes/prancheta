@@ -1,0 +1,20 @@
+.parent {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.child {
+    flex: 1 0 21%;
+    /* explanation below */
+    margin: 0.5px;
+    margin-top: 0.5px
+    /* height: 100px; */
+    /* background-color: blue; */
+}
+
+.close {
+    margin-left: .25rem;
+    color: inherit;
+    font-size: 100%;
+    text-shadow: 0 1px 0 rgba(#000, .5);
+}

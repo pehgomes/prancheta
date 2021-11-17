@@ -1,7 +1,5 @@
 import React from "react";
 
-import Table from 'react-bootstrap/Table'
-
 export default class Formacao extends React.Component {
 
     state = {
